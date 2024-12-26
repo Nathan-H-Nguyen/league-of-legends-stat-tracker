@@ -7,16 +7,6 @@ from . import config
 from .blueprints.base import base_bp
 
 def create_app(config_class=config.DevelopmentConfig):
-    """
-    Flask Application Factory.
-    Creates and configures the Flask application instance
-
-    Args:
-        config_class: The configuration class (from config.py) to use (Default: DevelopmentConfig).
-
-    Returns:
-        A configured Flask application instance.
-    """
     app = Flask(__name__)
 
     # Load configuration from config class
@@ -25,7 +15,7 @@ def create_app(config_class=config.DevelopmentConfig):
     # Register base blueprint
     app.register_blueprint(base_bp)
 
-    # Session lifetime of 1 week (7 days)
+    # Session lifetime
     app.permanent_session_lifetime = timedelta(days=7)
 
     # Uncomment once I have everything regarded database figured out, i.e. tables, columns, format, etc.
